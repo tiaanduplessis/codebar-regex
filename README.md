@@ -64,6 +64,8 @@
 
 ## Install
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/tiaanduplessis/codebar-regex.svg)](https://greenkeeper.io/)
+
 ```sh
 $ npm install --save codebar-regex
 # OR
