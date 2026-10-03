@@ -19,14 +19,12 @@
     "codebar": "cli.js"
   },
   "scripts": {
-    "start": "npm run dev",
-    "pretest": "npm run lint:fix",
-    "test": "jest --env=node",
-    "test:watch": "npm test -- --watch",
-    "coverage": "npm test -- --coverage",
+    "test": "npm run lint && node --test test/*.test.js",
+    "test:watch": "node --test --watch test/api.test.js test/cli.test.js",
+    "test:package": "node --test test/package.test.js",
+    "coverage": "node --test --experimental-test-coverage test/*.test.js",
     "lint": "standard --verbose",
-    "lint:fix": "standard --fix --verbose",
-    "precommit": "npm test"
+    "lint:fix": "standard --fix --verbose"
   },
   "keywords": [
     "regex",
@@ -37,8 +35,6 @@
   ],
   "dependencies": {},
   "devDependencies": {
-    "husky": "^0.14.3",
-    "jest": "^22.0.0",
-    "standard": "^11.0.0"
+    "standard": "17.1.2"
   }
 }
