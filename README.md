@@ -100,9 +100,32 @@ $ codebar A40156B
 # true
 ```
 
+The CLI reads only its first argument and prints `true` or `false`. It exits with
+status 0 for both results, including a missing argument. It does not read stdin.
+
 ## Contribute
 
 Contributions are welcome. Please open up an issue or create PR if you would like to help out.
+
+For development, use Node.js 22 or newer and npm. Install the locked development
+dependencies without lifecycle scripts, then run the local tests and non-fixing lint:
+
+```sh
+npm ci --ignore-scripts
+npm test
+```
+
+`npm test` also packs the checkout and verifies the installed CommonJS entry and
+`codebar` executable in an isolated temporary directory. `npm run coverage` runs
+the same tests with Node's coverage reporting. `npm run test:watch` watches the local
+API and CLI tests; `npm run lint:fix` is an explicit, optional formatting command.
+No Git hooks are installed. The development Node requirement does not change the
+published implementation or impose a new consumer engine requirement.
+
+Each call to `codebarRegex()` returns a fresh global regular expression. Reusing
+one expression follows normal `RegExp.lastIndex` behavior. The tests preserve the
+existing uppercase A–D sentinels, nonempty `0123456789-$:.+/` payload, and exact
+string anchoring.
 
 Note: If editing the README, please conform to the [standard-readme](https://github.com/RichardLitt/standard-readme) specification.
 
